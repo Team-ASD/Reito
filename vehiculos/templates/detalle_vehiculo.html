@@ -1,0 +1,46 @@
+  
+{% extends 'base1.html' %}
+
+{% block titulo %}
+    Nuevo vehiculo
+{% endblock titulo %}
+
+{% block css %}
+{% endblock css %}
+    
+
+{% block body %}
+    
+    <div class="container">
+        <h1 class="text-center">Tu Veh&#237;culo</h1>
+        <div class="row justify-content-center align-items-center">
+            <div class="col col-sm-8 col-md-6 col-lg-5">
+                <div class="form-group">
+                    <label for="email" class="form-label">Modelo</label>
+                    <input type="email" class="form-control" name="email" id="email"value="{{vehiculo.modelo}}" disabled>
+
+                    <label for="first_name" class="form-label">Marca</label>
+                    <input type="text" class="form-control" name="first_name" id="first_name" value="{{vehiculo.marca}}" disabled>
+
+                    <label for="last_name" class="form-label">Matr&#237;cula</label>
+                    <input type="text" class="form-control" name="last_name" id="last_name" value="{{vehiculo.matricula}}" disabled>
+
+
+                    <label for="email" class="form-label">Asientos</label>
+                    <input type="email" class="form-control" name="email" id="email"value="{{vehiculo.asientos}}" disabled>
+                
+
+                    <label for="email" class="form-label">Descripci&#243;n</label>
+                    <input type="textarea" class="form-control" name="email" id="email"value="{{vehiculo.descripcion}}" disabled>
+                </div>
+                <br>
+                <a href="{% url 'usuarios:ver_mi_cuenta' %}" class="boton btn">Regresar</a>
+            </div><!--/col-9-->
+        </div><!--/row-->
+    </div>
+    
+{% endblock body %}
+
+
+{% block js %}
+{% endblock js %}

@@ -1,0 +1,31 @@
+{% extends "base1.html" %}
+{% load static %}
+
+{% block titulo %}
+    Descripci&oacute;n pasajero
+{% endblock titulo %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center">Informaci&oacute;n de pasajero</h1>
+    <br>
+    <div class="row justify-content-center align-items-center">
+    	<div class="col col-sm-8 col-md-6 col-lg-5">
+            <div class="form-group">
+                <label for="fullname" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" name="full name" id="fullname"value="{{usuario}}" disabled>
+
+                <label for="telefono" class="form-label">Tel&eacute;fono</label>
+                <input type="email" class="form-control" name="email" id="email"value="{{usuario.telefono}}" disabled>
+            </div>
+             <br>
+            {% if not reserva.estado %}
+                <div class="row col-sm-10 col-md-6 col-lg-4 mx-auto">
+                    <a class ="btn boton" href="{%url 'reservas:aceptar' usuario.id viaje.id %}">Aceptar</a>
+                </div>
+            {% endif %}
+        </div><!--/col-9-->
+    </div><!--/row-->
+</div>
+  
+{% endblock body %}

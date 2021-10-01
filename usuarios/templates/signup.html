@@ -1,0 +1,48 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}
+Crear cuenta
+{% endblock title %}
+
+{% block contenido %}
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title"> Reg&iacute;strate</h1>
+            <div class="account-wall">
+                <form method="post" class="form-signin">
+                    {{form.errors}}
+                    {% csrf_token %}
+                    <label for="username" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario">
+
+                    <label for="first_name" class="form-label">Nombre(s)</label>
+                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Nombre(s)">
+
+                    <label for="last_name" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Apellidos">
+
+                    <label for="email" class="form-label">Correo</label>
+                    {{form.email}}
+                    
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+
+                    <label for="telefono" class="form-label">Tel&eacute;fono</label>
+                    <input placeholder="1234567890" pattern="\d*" maxlength="10" minlength="10" class="form-control" name="{{form.telefono.name}}" id="{{form.telefono.name}}">
+                    
+                    <!-- <a href="#" class="pull-right need-help">¿Necesita ayuda? </a><span class="clearfix"></span> -->
+                    <button class="btn boton" type="submit">Registrarme</button>
+                </form>
+            </div>
+            <a href="{% url 'usuarios:login' %}" class="text-center new-account">Iniciar Sesi&oacute;n </a>
+        </div>
+    </div>
+</div>
+
+</div><!--//row-->
+{% endblock contenido %}

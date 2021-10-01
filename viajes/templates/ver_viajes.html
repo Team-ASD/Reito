@@ -1,0 +1,67 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block title %}
+  Mis Reitos
+{% endblock title %}
+
+{% block body %}
+
+<!-- <h1 class="text-center">Viajes disponibles para {{destino}}</h1> -->
+<br>
+<h1 class = "text-center"> Mis reservas</h1>
+<br>
+<div class="container col-sm-10 col-md-6 col-lg-4 justify-content-center align-items-center">
+    {% if reservas %}
+    <ul class="list-group list-group-flush">
+        {% for reserva in reservas %}
+            <a href="{% url 'viajes:detalle' reserva.viaje.id %}" class="border rounded-3 list-group-item list-group-item-action flex-column align-items-start destino-item">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{reserva.viaje.conductor}}</h5>
+                  <small>${{reserva.viaje.precio}}</small>
+                </div>
+                <div class="text-center">
+                    <h3>{{reserva.viaje.destino}}</h3>
+                </div>
+                <div>
+                    <small>{{reserva.viaje.fecha}} - {{reserva.viaje.hora}}</small>
+                </div>
+            </a>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <h4>Nada por aqu&iacute;</h4>
+    {% endif %}
+</div>
+<br><br>
+<h1 class = "text-center"> Mis Reitos</h1>
+<div class="container col-sm-10 col-md-6 col-lg-4 justify-content-center align-items-center">
+    <br>
+    <div class="row col-sm-10 col-md-6 col-lg-4 mx-auto">
+        <a class= "btn boton" href="{% url 'viajes:nuevo' %}">Nuevo Reito</a>
+    </div>
+    <br>
+    {% if viajes %}
+    <ul class="list-group list-group-flush">
+        {% for viaje in viajes %}
+            <a href="{% url 'viajes:detalle' viaje.id %}" class="border rounded-3 list-group-item list-group-item-action flex-column align-items-start destino-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"></h5>
+                    <small>${{viaje.precio}}</small>
+                </div>
+                <div class="text-center">
+                    <h3>{{viaje.destino}}</h3>
+                </div>
+                <div>
+                    <small>{{viaje.fecha}} - {{viaje.hora}}</small>
+                </div>
+              </a>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <h4>Nada por all&aacute;</h4>
+    {% endif %}
+</div>
+<br><br>
+
+{% endblock body %}
