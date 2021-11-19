@@ -28,14 +28,14 @@
                 
                 {% if usuario.descripcion %}
                     <label for="descripcion" class="form-label">Descripci&oacute;n</label>
-                    <input type="text" class="form-control" name="descripcion" id="id_descripcion"value="{{ usuario.descripcion }}" disabled>
+                    <textarea type="text" class="form-control" name="descripcion" id="id_descripcion" rows="10" cols="20" disabled>{{ usuario.descripcion }}</textarea>
                 {% endif %}  
             </div>
              <br>
 
             <div class="text-center">
 
-                <a href="javascript:history.back()" class="btn boton-negativo"> Volver</a>
+                <a href="{% url 'viajes:detalle' viaje.id %}" class="btn boton-negativo"> Volver</a>
                 {% if not reserva.estado %}
                     <a class ="btn boton" href="{%url 'reservas:aceptar' usuario.id viaje.id %}">Aceptar pasajero</a>
                 {% endif %}

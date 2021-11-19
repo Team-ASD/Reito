@@ -36,11 +36,34 @@
                 <br>
                 <div class="text-center">
                     <a href="{% url 'usuarios:ver_mi_cuenta' %}" class="btn boton-negativo">Volver</a>
-                    <a href="{% url 'vehiculos:editar' vehiculo.id %}" class="btn boton">Editar</a>
+                    <a href="{% url 'vehiculos:editar'%}" class="btn boton">Editar</a>
+                    <button onclick="muestraModal('{% url 'vehiculos:eliminar' vehiculo.id %}','{{vehiculo.marca}}')" type="button" class="btn boton" data-toggle="modal" data-target="#exampleModal">
+                        Eliminar Vehiculo
+                    </button>
                 </div>
             </div><!--/col-9-->
         </div><!--/row-->
     </div>
+
+    <!-- Modal -->
+<div class="modal hide" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fa"></i></button>
+            </div>
+            <div class="modal-body" id ="texto"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn boton-negativo" data-dismiss="modal">No</button>
+                <form id="formEliminar" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Si</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <br>
 <br>
@@ -49,4 +72,11 @@
 
 
 {% block js %}
+    <script>
+        function muestraModal(url,marca){
+
+            document.getElementById('formEliminar').action = url;
+            document.getElementById('texto').innerHTML = `¿Deseas eliminar el  vehiculo  marca ${marca} ?`;
+        }
+    </script>
 {% endblock js %}

@@ -48,10 +48,10 @@ Detalle de cuenta
 
             <form action="{% url 'usuarios:editar_mi_cuenta' %}" method="GET">
                 <div class="text-center">
-                    <a href="javascript:history.back()" class="btn boton-negativo"> Volver</a>
+                    <a href="{% url 'viajes:index' %}" class="btn boton-negativo"> Volver</a>
                     <button type="submit" class="btn boton">Editar</button>
                     {%if vehiculo %}
-                        <a href="{% url 'vehiculos:ver' vehiculo.id %}" class="boton btn"> Ver mi veh&iacute;culo</a>
+                        <a href="{% url 'vehiculos:ver' %}" class="boton btn"> Ver mi veh&iacute;culo</a>
                     {%else%}
                         <a href="{% url 'vehiculos:nuevo' %}" class="btn boton">Agregar veh&iacute;culo</a>
                     {%endif%}

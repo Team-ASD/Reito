@@ -8,46 +8,76 @@
 
 {% block body %}
 
-    <div class="container-image-index">
-        
-        {% if user.is_authenticated %}
-            <br>
-        {% endif %}
-        <br>
-        <div class="container">
-            <h1>Encuentra tu mejor Reito</h1>
+    <!-- Contenedor para barra de búsqueda y título -->
+    <div class="contenedor">
+        <div class="container-image-index">
+                <br>
+                <div class="container">
+                    <h1>Encuentra tu mejor Reito</h1>
+                </div>
+                <br>
+                <div class="container-fluid separator">
+                    {% if user.is_authenticated %}
+                        {% include "barra_busqueda.html" %}
+                    {% endif %}
+                        
+                </div>
         </div>
-        <br>
+    </div>
+
+    <!-- Contenedor para imagen, fluid para que se extienda en toda la página -->
         <div class="container-fluid separator">
-        
-            {% if user.is_authenticated %}
-                {% include "barra_busqueda.html" %}
-            {% endif %}
-            
             {% if not user.is_authenticated %}
                 <img class="image-index" src="{% static 'img/fondo_autos2.png' %}" alt="Transporte">
             {% endif %}
         </div>
 
-        
-        {% if user.is_authenticated %}
-            <br><br><br>
-            <div class="container">
-                <h2>Destinos frecuentes</h1>
-            </div>
-            <div class="container-fluid separator">
-                {% for destino  in destinos  %}
-                    <a class = "destinos-frec" href="{% url 'viajes:buscar_viajes' destino.id%}">{{destino}}</a>
-                {% endfor %}
-            </div>
-        {% endif %}
+    <!-- Contenedor para destinos frecuentes, viajes recientes -->
+    <div class="contenedor">
+        <div class="container-image-index">
             
-        
-    </div>
-    
+            {% if user.is_authenticated %}
+                <br><br><br>
+                <div class="container">
+                    <h2>Destinos frecuentes</h1>
+                </div>
+                <div class="container-fluid separator">
+                    {% for destino  in destinos  %}
+                    <a class = "destinos-frec" href="{% url 'viajes:buscar_viajes' destino.id%}">{{destino}}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
 
-    
-    
+                
+            {% if user.is_authenticated%}
+                <br><br><br>
+                <div class="container align-items-center">
+                    <h2>&Uacuteltimos Reitos</h1>
+                    <div class="contenedor">
+                        <div class="viajes-recientes">
+                            {% for viaje  in viajes_recientes  %}
+                            <a href="{% url 'viajes:detalle' viaje.id %}" class="border rounded-3 list-group-item  align-items-center destino-item">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="mb-1">{{viaje.conductor}}</h5>
+                                    <small>${{viaje.precio}}</small>
+                                </div>
+                                <div class="text-center">
+                                    <h3>{{viaje.destino}}</h3>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <small>{{viaje.fecha}} - {{viaje.hora}}</small>
+                                </div>
+                            </a>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+        
+        
 {% endblock body %}
     
     

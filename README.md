@@ -41,6 +41,18 @@ Dentro de la carpeta raíz tenemos un archivo llamado requirements.txt el cual c
    ```
 Dicha linea instalará todo lo necesario.
 
+- Configurar cuenta de almacenamiento en Cloudinary (almacenamiento de imagenes)
+Será necesario tener una cuenta de Cloudinary.
+Puedes crearla en el siguiente link: https://cloudinary.com/
+Cambiar datos de cuenta en el archivo settings.py ubicado en /reito/settings.py en las lineas indicadas. Los datos solicitados los proporciona Cloudinary en la pantalla principal de su plataforma.
+```shell
+   104   cloudinary.config( 
+   105      cloud_name = "CloudName de tu cuenta", 
+   106      api_key = "api_key de tu cuenta", 
+   107      api_secret = "api_secret de tu cuenta" 
+         )
+   ```
+
 - Realizar migraciones y llenar BD con destinos por defecto.
 Para crear las entidades en la base de datos tenemos que correr las siguientes lineas:
 ```shell

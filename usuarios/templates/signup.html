@@ -15,31 +15,37 @@ Crear cuenta
             <h1 class="text-center login-title"> Reg&iacute;strate</h1>
             <div class="account-wall">
                 <h5 class="text-center text-danger"><strong>Importante</strong></h4>
-                <h5 class="text-center">Tu imagen, nombre y nombre de usuario no será modificable. Ingresa datos verdaderos.</h5>
+                <h5 class="text-center">Tu imagen, nombre, nombre de usuario y contraseña no serán modificables. Ingresa datos verdaderos.</h5>
                     
 
                 <form method="post" class="form-signin" enctype="multipart/form-data">
-                    {{form.errors}}
                     {% csrf_token %}
-                    <label for="username" class="form-label">Nombre de usuario</label>
+                    {{form.username.errors}}
+                    <label for="username" class="form-label">Nombre de usuario*</label>
                     <input type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario">
 
-                    <label for="first_name" class="form-label">Nombre(s)</label>
+                    {{form.first_name.errors}}
+                    <label for="first_name" class="form-label">Nombre(s)*</label>
                     <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Nombre(s)">
 
-                    <label for="last_name" class="form-label">Apellidos</label>
+                    {{form.last_name.errors}}
+                    <label for="last_name" class="form-label">Apellidos*</label>
                     <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Apellidos">
 
-                    <label for="email" class="form-label">Correo</label>
+                    {{form.email.errors}}
+                    <label for="email" class="form-label">Correo*</label>
                     {{form.email}}
                     
-                    <label for="password" class="form-label">Contraseña</label>
+                    {{form.password.errors}}
+                    <label for="password" class="form-label">Contraseña*</label>
                     <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
 
-                    <label for="telefono" class="form-label">Tel&eacute;fono</label>
+                    {{form.telefono.errors}}
+                    <label for="telefono" class="form-label">Tel&eacute;fono*</label>
                     <input placeholder="1234567890" pattern="\d*" maxlength="10" minlength="10" class="form-control" name="{{form.telefono.name}}" id="{{form.telefono.name}}">
                     
-                    <label for="foto" class="form-label">Imagen</label>
+                    {{form.foto.errors}}
+                    <label for="foto" class="form-label">Imagen*</label>
                     <input type="file" class="form-control" name="foto" id="foto" accept="image/x-png,image/gif,image/jpeg" required>
                     <br>
                     <!-- <a href="#" class="pull-right need-help">¿Necesita ayuda? </a><span class="clearfix"></span> -->

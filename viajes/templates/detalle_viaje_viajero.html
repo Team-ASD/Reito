@@ -8,7 +8,45 @@
     
 
 {% block body %}
-  
+
+
+<!-- Card for the reservation state, it appears if the request is from a reservation -->
+{% if tiene_reserva %}
+    <div class="container col-sm-11 col-md-9 col-lg-5">
+        <div class="card">
+            <div class="estado">
+                {% if estado_reserva %}
+                <div class="card-header text-center estado_positivo">
+                    <h2 class="card-title">Reserva aceptada</h2>
+                </div>
+                {% else %}
+                <div class="card-header text-center estado_negativo">
+                    <h2 class="card-title">Reserva en espera de aprobaci&oacute;n</h2>
+                </div>
+                {% endif %}
+            </div>
+            
+            {% if estado_reserva %}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Tel&eacute;fono: {{telefono}}</li>
+                    
+                    {% if vehiculo %}
+                        <li class="list-group-item">Matr&iacute;cula de veh&iacute;culo: {{vehiculo.matricula}}</li>
+                        <li class="list-group-item">Descripci&oacute;n de veh&iacute;culo: {{vehiculo.descripcion}}</li>
+                    {% else %}
+                        <li class="list-group-item">Este Reito no tiene veh&iacute;culo asignado.</li>
+                    {% endif %}
+                        
+                    
+                    <!-- <li class="list-group-item"><strong>Matr&iacute;cula:</strong> {{vehiculo.matricula}}</li>
+                    <li class="list-group-item"><strong>Autom&oacute;vil:</strong>{{vehiculo.descripcion}}</li> -->
+                </ul>
+            {% endif %}
+        </div> 
+    </div>
+    <br>
+{% endif %}
+
 
 <div class="container col-sm-11 col-md-9 col-lg-5">
     <div class="card">
@@ -17,23 +55,31 @@
             <h5 class="card-title">{{viaje.fecha}}</h5>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{viaje.hora}}</li>
-            <li class="list-group-item">${{viaje.precio}}</li>
-            <li class="list-group-item">{{viaje.asientos}} asientos disponibles</li>
-            {% if telefono %}
-            <li class="list-group-item">{{telefono}}</li>
+            <li class="list-group-item">Hora: {{viaje.hora}}</li>
+            <li class="list-group-item">Precio: ${{viaje.precio}}</li>
+            
+            {% if vehiculo %}
+                <li class="list-group-item">Marca del veh&iacute;culo: {{vehiculo.marca}}</li>
+                <li class="list-group-item">Modelo del veh&iacute;culo: {{vehiculo.modelo}}</li>
+                
+                {% if viaje.asientos == 1 %}
+                    <li class="list-group-item">{{viaje.asientos}} asiento disponible</li>
+                {% else %}
+                    <li class="list-group-item">{{viaje.asientos}} asientos disponibles</li> 
+                {% endif %}
+            {% else %}
+                <li class="list-group-item">Este Reito no tiene veh&iacute;culo asignado.</li>
+                
             {% endif %}
+                
+                
+            
         </ul>
         
         <div class="card-body">
-            <p class="card-text">{{viaje.descripcion}}</p>
+            <p class="card-text">Descripci&oacute;n: {{viaje.descripcion}}</p>
         </div>
-
-        
-    </div>
-
-    
-    
+    </div> 
 </div>
 
 <br>

@@ -45,13 +45,10 @@ body {
     align-items: flex-end;
 } */
 
-.nav-it-der {
-    margin-right: 7%;
-}
 
-.nav-it-izq {
-    margin-left: 7%;
-}
+
+/* -----------------  Nav Bar ------------------ */
+
 
 .nav-personalized {
     background-color: #0D0221;
@@ -60,6 +57,7 @@ body {
 .nav-personalized a {
     color: #FFFFFF;
     padding: 10px;
+    margin-right: 20px;
     cursor: pointer;
 }
 
@@ -70,6 +68,37 @@ body {
 .nav-personalized ul a{
     color: #3A606E;
 }
+
+
+.contenedor {
+    width: 90%;
+    margin: auto;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenedor-links {
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    .contenedor {
+        width: 95%;
+        margin: auto;
+    }
+
+    .nav-personalized a {
+        margin-right: 10px;
+    }
+}
+
+
+
+/* -----------------   ------------------ */
 
 .separator {
     padding: 5px;
@@ -137,6 +166,25 @@ body {
     font-size: 1.5rem;
 } */
 
+div.estado {
+    color: #fff;
+}
+div.estado_positivo {
+    background-color: #17C3B2;
+}
+
+.etiqueta_negativa {
+    color: #3A606E;
+}
+
+.etiqueta_positiva {
+    color: #17C3B2;
+}
+
+div.estado_negativo {
+    background-color: #3A606E; 
+}
+
 .boton-negativo {
     background:#3A606E; 
     color:white;
@@ -145,6 +193,13 @@ body {
 .boton-peligro {
     background:#0D0221; 
     color:white;
+}
+
+.viajes-recientes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
 }
 
 @media (min-width: 990px) {
@@ -157,11 +212,20 @@ body {
     .busqueda {
         left:25%
     }
+
+    .viajes-recientes {
+        flex-direction: column;
+
+    }
 }
 
 @media (max-width: 767px) {
     .busqueda {
         left:15%
+    }
+
+    .head {
+        flex-direction: column;
     }
 }
 
@@ -171,6 +235,8 @@ body {
     }
 }
 
+
+
 .destino-item:hover {
     background:#3A606E; 
     color:white;
@@ -178,6 +244,19 @@ body {
 
 .destino-item {
     margin-bottom: 17.5px;
+    width: 100%;
+}
+
+.viajes-recientes .destino-item {
+    margin-left: 17.5px;
+    margin-right:17.5px;
+    width: 30%;
+}
+
+@media (max-width: 989px) {
+    .viajes-recientes .destino-item {
+        width: 90%;
+    }
 }
 
 
@@ -191,4 +270,6 @@ body {
     text-decoration: none;
     color: #0D0221;
 }
+
+
 

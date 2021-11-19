@@ -33,7 +33,7 @@
 
 
       <div class="container col-sm-11 col-md-9 col-lg-5 text-center">
-        <a href="javascript:history.back()" class="btn boton-negativo"> Volver</a>
+        <a href="{% url 'viajes:ver_viajes' %}" class="btn boton-negativo"> Volver</a>
         <button onclick="muestraModal('{% url 'viajes:eliminar' viaje.id %}','{{viaje.destino}}')" type="button" class="btn boton" data-toggle="modal" data-target="#exampleModal">
           Cancelar Reito
         </button>

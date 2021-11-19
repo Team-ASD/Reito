@@ -1,28 +1,34 @@
 {% extends 'base1.html' %}
 
-
 {% block title %}
   Nuevo Viaje
 {% endblock title %}
 
 {{% block body %}
-
+<br>
 <div class="container">
     <h1 class="text-center">Publicar Reito</h1>
     <div class="row justify-content-center align-items-center">
     	<div class="col col-sm-8 col-md-6 col-lg-5">
-            <form method="post">
-                {% csrf_token %}
-                {{form.as_p}}
-                <div class="text-center">
-                    <a href="javascript:history.back()" class="btn boton-negativo"> Volver</a>
-                    <button type="submit" class="btn boton">Guardar</button>
-                </div>
-            </form>      
+            {% if tiene_vehiculo %}
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <div class="text-center">
+                        <a href="{% url 'viajes:ver_viajes' %}" class="btn boton-negativo"> Volver</a>
+                        <button type="submit" class="btn boton">Guardar</button>
+                    </div>
+                </form>
+            {% else %}
+                <br>
+                <br>
+                <h4 class="text-center">Primero tienes que registrar tu vehiculo <a href="{% url 'vehiculos:nuevo' %}">aqu&iacute;.</a> </h4>
+            {% endif %}
+
         </div>
     </div>
 </div>
 <br>
 <br>
 
-{% endblock body %}}
+{% endblock body %}}  
