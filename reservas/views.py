@@ -38,8 +38,8 @@ def nueva_reserva(request, user_pk, viaje_pk):
             try:
                 reserva = Reserva.objects.create(viaje=viaje, usuario=usuario)
                 reserva.save()
-                messages.success(
-                    request, "Tu asiento ha sido reservado exitosamente")
+                messages.warning(
+                    request, "Tu solicitud se envió exitosamente")
                 return redirect('viajes:index')
             except:
                 messages.error(request, "No se pudo reservar tu asiento")
