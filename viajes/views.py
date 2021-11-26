@@ -162,7 +162,7 @@ def detalle_viaje(request, pk):
 @login_required
 def cancelar_viaje(request, pk):
     # Get an instance of the trip you want to cancel.
-    viaje = get_object_or_404(Viaje, id=pk)
+    viaje = get_object_or_404(Viaje, id=pk, conductor=request.user)
 
     # Verify that it comes through a form.
     if request.method == "POST":
